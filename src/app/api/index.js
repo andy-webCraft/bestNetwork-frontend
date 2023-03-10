@@ -6,7 +6,7 @@ import { appModel } from "entities/app";
 import { authModel } from "entities/auth";
 import { ERROR } from "shared/lib/vars";
 
-const SERVER_BASE_URL = "http://localhost:3001";
+const SERVER_BASE_URL = "https://best-network-backend.onrender.com";
 const mutex = new Mutex();
 
 const baseQuery = fetchBaseQuery({
