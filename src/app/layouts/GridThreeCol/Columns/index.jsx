@@ -9,6 +9,8 @@ export function LeftColumn({ children }) {
   );
 }
 
+LeftColumn.displayName = "LeftColumn";
+
 LeftColumn.propTypes = {
   children: PropTypes.oneOfType([
     PropTypes.element,
@@ -27,6 +29,7 @@ export function CenterColumn({ children }) {
     </Grid>
   );
 }
+CenterColumn.displayName = "CenterColumn";
 
 CenterColumn.propTypes = {
   children: PropTypes.oneOfType([
@@ -46,6 +49,8 @@ export function RightColumn({ children }) {
     </Grid>
   );
 }
+
+RightColumn.displayName = "RightColumn";
 
 RightColumn.propTypes = {
   children: PropTypes.oneOfType([

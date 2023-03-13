@@ -13,7 +13,7 @@ function GridColumns({ children }) {
     const handleChild = (child) => {
       if (!isValidElement(child)) return;
 
-      switch (child.type.name) {
+      switch (child.type.displayName) {
         case "LeftColumn": {
           collections.left.push(child);
           break;
