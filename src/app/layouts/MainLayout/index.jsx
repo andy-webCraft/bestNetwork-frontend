@@ -31,9 +31,9 @@ function MainLayout({ children }) {
       <Box
         component="main"
         minWidth="100%"
-        minHeight="calc(100% - 72px)"
+        minHeight="100%"
+        display="flex"
         p={isMobile ? "1rem" : "2rem"}
-        mt="72px"
       >
         <Suspense fallback={<Loader />}>{children}</Suspense>
       </Box>

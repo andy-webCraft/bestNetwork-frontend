@@ -8,6 +8,7 @@ import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
 
 function ImageDropbox({ imageValue, setImageValue, previewSize = "60px" }) {
   const [preview, setPreview] = useState(null);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (!imageValue) {
@@ -21,12 +22,24 @@ function ImageDropbox({ imageValue, setImageValue, previewSize = "60px" }) {
     return () => URL.revokeObjectURL(objectUrl);
   }, [imageValue]);
 
-  const handleOnDrop = (acceptedFiles) => {
+  const handleOnDrop = (acceptedFiles, fileRejections) => {
+    setError(null);
+
+    if (fileRejections.length) {
+      setError(fileRejections[0].errors[0].message);
+      return;
+    }
+
     setImageValue(acceptedFiles[0]);
   };
 
   return (
-    <Dropzone acceptedFiles=".jpg,.jpeg,.png" multiple={false} onDrop={handleOnDrop}>
+    <Dropzone
+      accept={{ "image/png": [".jpg", ".jpeg", ".png"] }}
+      maxSize={31457280}
+      multiple={false}
+      onDrop={handleOnDrop}
+    >
       {({ getRootProps, getInputProps }) => (
         <Box
           {...getRootProps()}
@@ -38,9 +51,7 @@ function ImageDropbox({ imageValue, setImageValue, previewSize = "60px" }) {
           <input {...getInputProps()} />
 
           {!imageValue ? (
-            <Typography textAlign="center" marginY="1rem">
-              Drop a picture or click here to add it
-            </Typography>
+            <Typography textAlign="center" marginY="1rem">Drop a picture or click here to add it</Typography>
           ) : (
             <FlexBetween>
               <Box display="flex" alignItems="center">
@@ -52,6 +63,10 @@ function ImageDropbox({ imageValue, setImageValue, previewSize = "60px" }) {
 
               <EditOutlinedIcon />
             </FlexBetween>
+          )}
+
+          {error && (
+            <Typography color="red" fontSize={14} textAlign="center">{error}</Typography>
           )}
         </Box>
       )}

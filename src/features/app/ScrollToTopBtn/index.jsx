@@ -1,9 +1,13 @@
 import { useEffect, useState } from "react";
 import { IconButton } from "@mui/material";
 import ArrowCircleUpOutlinedIcon from "@mui/icons-material/ArrowCircleUpOutlined";
+import { useSelector } from "react-redux";
+import { appModel } from "entities/app";
 
 function ScrollToTopBtn() {
   const [show, setShow] = useState(false);
+
+  const isMobile = useSelector(appModel.isMobile);
 
   const handleListener = () => {
     if (window.scrollY > window.innerHeight) setShow(true);
@@ -27,7 +31,11 @@ function ScrollToTopBtn() {
       color="primary"
       onClick={hancleScroll}
       sx={{
-        position: "fixed", bottom: "2.5rem", right: "2.5rem", zIndex: "500",
+        backdropFilter: "blur(2px)",
+        position: "fixed",
+        bottom: isMobile ? "1rem" : "2.5rem",
+        right: isMobile ? "1rem" : "2.5rem",
+        zIndex: "500",
       }}
     >
       <ArrowCircleUpOutlinedIcon fontSize="large" />
