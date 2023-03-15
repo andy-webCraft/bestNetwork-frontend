@@ -33,6 +33,7 @@ function MainLayout({ children }) {
         minWidth="100%"
         minHeight="100%"
         display="flex"
+        alignItems="flex-start"
         p={isMobile ? "1rem" : "2rem"}
       >
         <Suspense fallback={<Loader />}>{children}</Suspense>

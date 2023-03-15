@@ -45,6 +45,9 @@ const themeSettings = (mode) => ({
     h1: {
       fontSize: "2rem",
       fontWeight: 700,
+      "@media (max-width:600px)": {
+        fontSize: "1.5rem",
+      },
     },
     h2: {
       fontSize: "2rem",
