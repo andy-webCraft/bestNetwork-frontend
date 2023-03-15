@@ -8,6 +8,7 @@ import { authApi } from "entities/auth";
 import TextInput from "shared/ui/TextInput";
 import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
+import formBoolValue from "shared/lib/formBoolValue";
 import { initialValuesLogin, loginSchema } from "./schema";
 
 function LoginForm() {
@@ -44,7 +45,7 @@ function LoginForm() {
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.email}
-              error={Boolean(touched.email) && Boolean(errors.email)}
+              error={formBoolValue.simple([touched.email, errors.email])}
               helperText={touched.email && errors.email}
             />
 
@@ -55,7 +56,7 @@ function LoginForm() {
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.password}
-              error={Boolean(touched.password) && Boolean(errors.password)}
+              error={formBoolValue.simple([touched.password, errors.password])}
               helperText={touched.password && errors.password}
               InputProps={{
                 endAdornment: (

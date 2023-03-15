@@ -10,6 +10,7 @@ import Visibility from "@mui/icons-material/Visibility";
 import VisibilityOff from "@mui/icons-material/VisibilityOff";
 import PropTypes from "prop-types";
 import serializeFormData from "shared/lib/serializeFormData";
+import formBoolValue from "shared/lib/formBoolValue";
 import { initialValuesRegister, registerSchema } from "./schema";
 
 function RegisterForm({ submitCallback }) {
@@ -52,7 +53,7 @@ function RegisterForm({ submitCallback }) {
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.firstName}
-              error={Boolean(touched.firstName) && Boolean(errors.firstName)}
+              error={formBoolValue.simple([touched.firstName, errors.firstName])}
               helperText={touched.firstName && errors.firstName}
             />
 
@@ -62,7 +63,7 @@ function RegisterForm({ submitCallback }) {
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.lastName}
-              error={Boolean(touched.lastName) && Boolean(errors.lastName)}
+              error={formBoolValue.simple([touched.lastName, errors.lastName])}
               helperText={touched.lastName && errors.lastName}
             />
 
@@ -72,7 +73,7 @@ function RegisterForm({ submitCallback }) {
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.location}
-              error={Boolean(touched.location) && Boolean(errors.location)}
+              error={formBoolValue.simple([touched.location, errors.location])}
               helperText={touched.location && errors.location}
             />
 
@@ -82,7 +83,7 @@ function RegisterForm({ submitCallback }) {
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.occupation}
-              error={Boolean(touched.occupation) && Boolean(errors.occupation)}
+              error={formBoolValue.simple([touched.occupation, errors.occupation])}
               helperText={touched.occupation && errors.occupation}
             />
 
@@ -99,7 +100,7 @@ function RegisterForm({ submitCallback }) {
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.email}
-              error={Boolean(touched.email) && Boolean(errors.email)}
+              error={formBoolValue.simple([touched.email, errors.email])}
               helperText={touched.email && errors.email}
             />
 
@@ -110,7 +111,7 @@ function RegisterForm({ submitCallback }) {
               onBlur={handleBlur}
               onChange={handleChange}
               value={values.password}
-              error={Boolean(touched.password) && Boolean(errors.password)}
+              error={formBoolValue.simple([touched.password, errors.password])}
               helperText={touched.password && errors.password}
               InputProps={{
                 endAdornment: (
