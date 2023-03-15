@@ -11,6 +11,7 @@ import serializeFormData from "shared/lib/serializeFormData";
 import FlexColumn from "shared/ui/FlexColumn";
 import ImageDropbox from "shared/ui/ImageDropbox";
 import TextInput from "shared/ui/TextInput";
+import formBoolValue from "shared/lib/formBoolValue";
 import { getInitialValuesProfile, profileSchema } from "./schema";
 
 function ProfileForm() {
@@ -70,7 +71,7 @@ function ProfileForm() {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.firstName}
-                  error={Boolean(touched.firstName) && Boolean(errors.firstName)}
+                  error={formBoolValue.simple([touched.firstName, errors.firstName])}
                   helperText={touched.firstName && errors.firstName}
                 />
               </Grid>
@@ -82,7 +83,7 @@ function ProfileForm() {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.lastName}
-                  error={Boolean(touched.lastName) && Boolean(errors.lastName)}
+                  error={formBoolValue.simple([touched.lastName, errors.lastName])}
                   helperText={touched.lastName && errors.lastName}
                 />
               </Grid>
@@ -96,7 +97,7 @@ function ProfileForm() {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.location}
-                  error={Boolean(touched.location) && Boolean(errors.location)}
+                  error={formBoolValue.simple([touched.location, errors.location])}
                   helperText={touched.location && errors.location}
                 />
               </Grid>
@@ -122,7 +123,7 @@ function ProfileForm() {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.links.github}
-                  error={Boolean(getIn(touched, "links.github") && getIn(errors, "links.github"))}
+                  error={formBoolValue.deep([touched, errors], "links.github")}
                   helperText={getIn(touched, "links.github") && getIn(errors, "links.github")}
                 />
               </Grid>
@@ -134,9 +135,7 @@ function ProfileForm() {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.links.facebook}
-                  error={Boolean(
-                    getIn(touched, "links.facebook") && getIn(errors, "links.facebook"),
-                  )}
+                  error={formBoolValue.deep([touched, errors], "links.facebook")}
                   helperText={getIn(touched, "links.facebook") && getIn(errors, "links.facebook")}
                 />
               </Grid>
@@ -150,7 +149,7 @@ function ProfileForm() {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.links.twitter}
-                  error={Boolean(getIn(touched, "links.twitter") && getIn(errors, "links.twitter"))}
+                  error={formBoolValue.deep([touched, errors], "links.twitter")}
                   helperText={getIn(touched, "links.twitter") && getIn(errors, "links.twitter")}
                 />
               </Grid>
@@ -162,9 +161,7 @@ function ProfileForm() {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={values.links.linkedin}
-                  error={Boolean(
-                    getIn(touched, "links.linkedin") && getIn(errors, "links.linkedin"),
-                  )}
+                  error={formBoolValue.deep([touched, errors], "links.linkedin")}
                   helperText={getIn(touched, "links.linkedin") && getIn(errors, "links.linkedin")}
                 />
               </Grid>
