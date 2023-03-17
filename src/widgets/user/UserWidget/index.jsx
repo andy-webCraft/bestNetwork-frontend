@@ -18,7 +18,7 @@ function UserWidget({ targetUserId, currentUser = null }) {
   useEffect(() => {
     if (!currentUser) setUser(data);
     else setUser(currentUser);
-  }, [data]);
+  }, [data, currentUser]);
 
   if (isFetching || !user) return <UserWidgetSkeleton />;
 
