@@ -18,12 +18,12 @@ function AdvertWidget() {
 
       <AdvertImage picturePath={data.advert.picturePath} />
 
-      <FlexBetween>
+      <FlexBetween gap="1rem">
         <Link href={data.advert.link} target="_blank">
           {data.advert.title}
         </Link>
         <Link href={data.advert.link} target="_blank">
-          {data.advert.link}
+          follow the link
         </Link>
       </FlexBetween>
 
