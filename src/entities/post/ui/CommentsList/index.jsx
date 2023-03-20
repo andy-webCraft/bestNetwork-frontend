@@ -15,7 +15,9 @@ export function CommentsList({ comments }) {
 }
 
 CommentsList.propTypes = {
-  comments: PropTypes.arrayOf(PropTypes.objectOf(PropTypes.string)).isRequired,
+  comments: PropTypes.arrayOf(PropTypes.objectOf(
+    PropTypes.oneOfType([PropTypes.object, PropTypes.number, PropTypes.string]),
+  )).isRequired,
 };
 
 export function CommentsListSkeleton() {
