@@ -61,8 +61,10 @@ export function Comment({ comment }) {
 
 Comment.propTypes = {
   comment: PropTypes.shape({
-    _id: PropTypes.number.isRequired,
-    author: PropTypes.objectOf(PropTypes.string).isRequired,
+    _id: PropTypes.string.isRequired,
+    author: PropTypes.objectOf(PropTypes.oneOfType(
+      [PropTypes.number, PropTypes.string],
+    )).isRequired,
     description: PropTypes.string.isRequired,
   }).isRequired,
 };
