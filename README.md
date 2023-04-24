@@ -2,11 +2,16 @@
 [Best Network - Backend](https://github.com/andy-webCraft/bestNetwork-backend) \
 [Live demo](https://best-network.onrender.com)
 
+<img src="./best-network-preview.gif" alt="project-preview" >
+
 ### Access data:
 ```
 email: 123@test.com
 password: 123
 ```
+
+**⚠ IMPORTANT!** \
+When you first visit the application page, you need to wait ~30 seconds before the server module is assembled (due to service limitations)
 
 ## Tools:
 - React.js
